@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>EXPLORE</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/send_url.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="/" class="header-logo"><img src="/images/topKecil.png"></a>
+        </header>
+        <div class="container">
+            <div class="container-header">
+                <div class="item-form-wrapper">
+                    <form action="/process" method="POST">
+                        <input type="text" name="query">
+                        <input type="submit" value="Search">
+                    </form>
+                </div>
+                <span class="num-results">About <%= movies.length %> out of <%= maxResults %> <%= maxResults == 1 ? 'result is shown.' : 'results are shown.' %> </span>
+            </div>
+            <ul class="table-body">
+                <% movies.forEach((movie) => { %>
+                    <div class="movie-data">
+                        <span class="name-column"><a href="/detail/<%= pages %>/<%= movie.id %>"><%= movie.title %></a></span>
+                        <span class="img-column"><img src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" onerror="this.onerror;this.src='/images/imageError.png'"></span>
+                        <span class="description-column"><p><%= movie.overview %></p></span>
+                    </div>
+                    <div class="movie-menu">
+                        <% if (!(watchList.map((watch) => {return watch.movie_id}).indexOf(movie.id) != -1)) { %>
+                            <form action="/add/<%= movie.id %>" method="POST">
+                                <input type="hidden" name="dir" value="/explore/<%= Number(pages) %>">
+                                <input type="submit" value="+ Add to Watchlist">
+                            </form>
+                        <% } else { %>
+                            <button type="button">&check; Added to Watchlist</button>
+                        <% } %>
+                    </div>
+                <% }) %>
+            </ul>
+            <div class="footer">
+                <% if (Number(pages) > 1 && Number(pages) < maxPages) { %>
+                    <a href="/explore/<%= Number(pages) - 1 %>" class="prev-button">Previous Page</a>
+                    <span class="page-number">Page <%= pages %> out of <%= maxPages %></span>
+                    <a href="/explore/<%= Number(pages) + 1 %>" class="next-button">Next Page</a>
+                <% } else if (Number(pages) > 1 && pages == maxPages) { %>
+                    <a href="/explore/<%= Number(pages) - 1 %>" class="prev-button">Previous Page</a>
+                    <span class="page-number">Page <%= pages %> out of <%= maxPages %></span>
+                    <a href="#" class="next-button">Next Page</a>
+                <% } else if (Number(pages) && pages == 1) { %>
+                    <a href="#" class="prev-button">Previous Page</a>
+                    <span class="page-number">Page <%= pages %> out of <%= maxPages %></span>
+                    <a href="/explore/<%= Number(pages) + 1 %>" class="next-button">Next Page</a>
+                <% } else { %>
+                    <a href="#" class="prev-button">Previous Page</a>
+                    <span class="page-number">Page <%= pages %> out of <%= maxPages %></span>
+                    <a href="#" class="next-button">Next Page</a>
+                <% } %>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title><%= movie.title %></title>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/send_url.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="/" class="header-logo"><img src="/images/topKecil.png"></a>
+        </header>
+        <div class="container">
+            <div class="container-back">
+                <a href="/watchlist" class="back-button">Back</a>
+            </div>
+            <ul class="table-body">
+                <div class="movie-data">
+                    <span class="name-column"><%= movie.title %></span>
+                    <span class="img-column"><img src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" onerror="this.onerror;this.src='/images/imageError.png'"></span>
+                    <span class="description-column"><p><%= movie.overview %></p></span>
+                    <span class="popularity-column">Popularity: <%= movie.popularity %></span>
+                    <span class="release-column">Release Date: <%= movie.release_date %></span>
+                    <span class="homepage-column">Homepage: <a href="<%= movie.homepage %>" target="_blank"><%= movie.homepage %></a></span>
+                    <span class="genre-column">Genres: <%= movie.genres.map((genre) => {return genre.name}).join(', ') %> </span>
+                </div>
+                <div class="movie-menu-watchlist">
+                    <form action="/remove/<%= movie.id %>" method="POST">
+                        <input type="hidden" name="dir" value="/watchlist">
+                        <input type="submit" value="- Remove from Watchlist">
+                    </form>
+                </div>
+            </ul>
+        </div>
+    </body>
+</html>

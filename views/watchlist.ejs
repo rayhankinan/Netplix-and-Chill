@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>My Watchlist</title>
+        <link rel="stylesheet" href="/css/style.css">
+        <script src="/send_url.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="/" class="header-logo"><img src="/images/topKecil.png"></a>
+        </header>
+        <div class="container">
+            <div class="container-header">
+                <h1>My Watchlist</h1>
+            </div>
+            <ul class="table-body-watchlist">
+                <% movies.forEach((movie) => { %>
+                    <div class="movie-watchlist">
+                        <div class="movie-data-watchlist">
+                            <span class="name-column-watchlist"><a href="/view/<%= movie.movie_id %>"><%= movie.movie_title %></a></span>
+                            <span class="img-column-watchlist"><img src="https://image.tmdb.org/t/p/w500<%= movie.img_link %>" onerror="this.onerror;this.src='/images/imageError.png'"></span>
+                        </div>
+                        <div class="movie-menu-watchlist">
+                            <form action="/remove/<%= movie.movie_id %>" method="POST">
+                                <input type="hidden" name="dir" value="/watchlist">
+                                <input type="submit" value="- Remove from Watchlist">
+                            </form>
+                        </div>
+                    </div>
+                <% }) %>
+            </ul>
+        </div>
+    </body>
+</html>

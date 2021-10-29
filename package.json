@@ -1,7 +1,7 @@
 {
-  "name": "MovieWeb",
+  "name": "netplix-and-chill",
   "version": "1.0.0",
-  "description": "",
+  "description": "Membuat watchlist yang berisi film yang ingin anda tonton",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,5 +15,14 @@
     "express": "^4.17.1",
     "nodemon": "^2.0.14",
     "xhr2": "^0.2.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rayhankinan/Netplix-and-Chill.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rayhankinan/Netplix-and-Chill/issues"
+  },
+  "homepage": "https://github.com/rayhankinan/Netplix-and-Chill#readme"
 }

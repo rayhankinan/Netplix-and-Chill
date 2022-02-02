@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const express = require('express');
 const mysql = require('mysql');
 const XMLHttpRequest = require('xhr2');
@@ -8,13 +10,13 @@ app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
 
 const connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'password',
-    database: 'movie_app'
+    host: process.env.HOST,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 });
 
-const apiKey = 'e594e183732ce702441be69ad41dab9c';
+const apiKey = process.env.APIKEY;
 
 app.get('/', (req, res) => {
     res.render('top.ejs');

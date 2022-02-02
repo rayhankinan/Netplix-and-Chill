@@ -9,7 +9,9 @@ const app = express();
 const saltRounds = parseInt(process.env.SALTROUND);
 
 app.use(express.static('public'));
-app.use(express.urlencoded({extended: false}));
+app.use(express.urlencoded({
+    extended: true
+}));
 
 const connection = mysql.createConnection({
     host: process.env.HOST,

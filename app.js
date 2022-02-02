@@ -3,8 +3,10 @@ require('dotenv').config()
 const express = require('express');
 const mysql = require('mysql');
 const XMLHttpRequest = require('xhr2');
+const bcrypt = require('bcrypt');
 
 const app = express();
+const saltRounds = parseInt(process.env.SALTROUND);
 
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: false}));
@@ -19,6 +21,52 @@ const connection = mysql.createConnection({
 const apiKey = process.env.APIKEY;
 
 app.get('/', (req, res) => {
+    res.redirect('/login');
+});
+
+app.get('/login', (req, res) => {
+    res.render('login.ejs', {successLogin: true})
+})
+
+app.get('/login/fail', (req, res) => {
+    res.render('login.ejs', {successLogin: false});
+});
+
+app.post('/process_login', (req, res) => {
+    connection.query('SELECT password FROM users WHERE username = ?', [req.body.username], (databaseError, databaseResults) => {
+        bcrypt.compare(req.body.password, databaseResults[0].password, (hashErr, hashRes) => {
+            if (hashRes) {
+                res.redirect('/top');
+            } else {
+                res.redirect('/login/fail');
+            }
+        });
+    });
+});
+
+app.get('/register', (req, res) => {
+    res.render('register.ejs', {successRegister: true});
+});
+
+app.get('/register/fail', (req, res) => {
+    res.render('register.ejs', {successRegister: false});
+});
+
+app.post('/process_register', (req, res) => {
+    connection.query('SELECT username FROM users WHERE username = ?', [req.body.username], (databaseError, databaseResults) => {
+        if (databaseResults.length === 0) {
+            bcrypt.hash(req.body.password, saltRounds, (hashErr, hashRes) => {
+                connection.query('INSERT INTO users (username, password) VALUES (?, ?)', [req.body.username, hashRes], (databaseError, databaseResults) => {
+                    res.redirect('/login');
+                });
+            });
+        } else {
+            res.redirect('/register/fail');
+        }
+    });
+});
+
+app.get('/top', (req, res) => {
     res.render('top.ejs');
 });
 
@@ -54,7 +102,7 @@ app.get('/detail/:page_id/:id', (req, res) => {
     });
 });
 
-app.post('/process', (req, res) => {
+app.post('/process_search', (req, res) => {
     res.redirect(`/search/${req.body.query}/1`);
 });
 

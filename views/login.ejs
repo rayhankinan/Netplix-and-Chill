@@ -8,6 +8,24 @@
         <link rel="icon" href="images/icon.png">
     </head>
     <body>
-
+        <header>
+            <a href="#" class="header-logo"><img src="/images/topKecil.png"></a>
+        </header>
+        <div class="container">
+            <div class="container-box">
+                <h1 class="title">Login</h1>
+                <% if (!successLogin) { %>
+                    <div class="login-warning">
+                        <p>Incorrect Username or Password</p>
+                    </div>
+                <% } %>
+                <form action="/process_login" method="POST">
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="submit" value="Login">
+                </form>
+                <a href="/register">Register</a>
+            </div>
+        </div>
     </body>
 </html>

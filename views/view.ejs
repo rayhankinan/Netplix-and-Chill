@@ -5,15 +5,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%= movie.title %></title>
         <link rel="stylesheet" href="/css/style.css">
-        <link rel="icon" href="images/icon.png">
+        <link rel="icon" href="/images/icon.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
-            <a href="/top" class="header-logo"><img src="/images/topKecil.png"></a>
+            <a href="/<%= username %>/top" class="header-logo"><img src="/images/topKecil.png"></a>
         </header>
         <div class="container">
             <div class="container-back">
-                <a href="/watchlist" class="back-button">Back</a>
+                <a href="/<%= username %>/watchlist" class="back-button">Back</a>
             </div>
             <ul class="table-body">
                 <div class="movie-data">
@@ -26,8 +27,8 @@
                     <span class="genre-column">Genres: <%= movie.genres.map((genre) => {return genre.name}).join(', ') %> </span>
                 </div>
                 <div class="movie-menu-watchlist">
-                    <form action="/remove/<%= movie.id %>" method="POST">
-                        <input type="hidden" name="dir" value="/watchlist">
+                    <form action="/<%= username %>/remove/<%= movie.id %>" method="POST">
+                        <input type="hidden" name="dir" value="/<%= username %>/watchlist">
                         <input type="submit" value="- Remove from Watchlist">
                     </form>
                 </div>

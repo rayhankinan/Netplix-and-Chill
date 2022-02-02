@@ -5,7 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Movie Watchlist</title>
         <link rel="stylesheet" href="/css/style.css">
-        <link rel="icon" href="images/icon.png">
+        <link rel="icon" href="/images/icon.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <div class="top-wrapper">
@@ -16,8 +17,8 @@
                     <br>
                     Anda dapat menambahkan film yang ingin ditonton ke dalam watchlist Anda.
                 </p>
-                <a href="/watchlist" class="index-button">See My Watchlist</a>
-                <a href="/explore/1" class="list-button">Explore</a>
+                <a href="/<%= username %>/watchlist" class="index-button">See My Watchlist</a>
+                <a href="/<%= username %>/explore/1" class="list-button">Explore</a>
             </div>
             <div class="top-image">
                 <img src="/images/topBesar.png">

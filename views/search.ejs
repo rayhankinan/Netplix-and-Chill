@@ -5,16 +5,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>EXPLORE</title>
         <link rel="stylesheet" href="/css/style.css">
-        <link rel="icon" href="images/icon.png">
+        <link rel="icon" href="/images/icon.png">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
         <header>
-            <a href="/top" class="header-logo"><img src="/images/topKecil.png"></a>
+            <a href="/<%= username %>/top" class="header-logo"><img src="/images/topKecil.png"></a>
         </header>
         <div class="container">
             <div class="container-header">
                 <div class="item-form-wrapper">
-                    <form action="/process_search" method="POST">
+                    <form action="/<%= username %>/process_search" method="POST">
                         <input type="text" name="query" placeholder="Search">
                         <input type="submit" value="Search">
                     </form>
@@ -24,14 +25,14 @@
             <ul class="table-body">
                 <% movies.forEach((movie) => { %>
                     <div class="movie-data">
-                        <span class="name-column"><a href="/result/<%= query %>/<%= pages %>/<%= movie.id %>"><%= movie.title %></a></span>
+                        <span class="name-column"><a href="/<%= username %>/result/<%= query %>/<%= pages %>/<%= movie.id %>"><%= movie.title %></a></span>
                         <span class="img-column"><img src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" onerror="this.onerror;this.src='/images/imageError.png'"></span>
                         <span class="description-column"><p><%= movie.overview %></p></span>
                     </div>
                     <div class="movie-menu">
                         <% if (!(watchList.map((watch) => {return watch.movie_id}).indexOf(movie.id) != -1)) { %>
-                            <form action="/add/<%= movie.id %>" method="POST">
-                                <input type="hidden" name="dir" value="/search/<%= query %>/<%= Number(pages) %>">
+                            <form action="/<%= username %>/add/<%= movie.id %>" method="POST">
+                                <input type="hidden" name="dir" value="/<%= username %>/search/<%= query %>/<%= Number(pages) %>">
                                 <input type="submit" value="+ Add to Watchlist">
                             </form>
                         <% } else { %>
@@ -42,17 +43,17 @@
             </ul>
             <div class="footer">
                 <% if (Number(pages) > 1 && Number(pages) < maxPages) { %>
-                    <a href="/search/<%= query %>/<%= Number(pages) - 1 %>" class="prev-button">Previous Page</a>
+                    <a href="/<%= username %>/search/<%= query %>/<%= Number(pages) - 1 %>" class="prev-button">Previous Page</a>
                     <span class="page-number">Page <%= pages %> out of <%= maxPages %></span>
-                    <a href="/search/<%= query %>/<%= Number(pages) + 1 %>" class="next-button">Next Page</a>
+                    <a href="/<%= username %>/search/<%= query %>/<%= Number(pages) + 1 %>" class="next-button">Next Page</a>
                 <% } else if (Number(pages) > 1 && Number(pages) == maxPages) { %>
-                    <a href="/search/<%= query %>/<%= Number(pages) - 1 %>" class="prev-button">Previous Page</a>
+                    <a href="/<%= username %>/search/<%= query %>/<%= Number(pages) - 1 %>" class="prev-button">Previous Page</a>
                     <span class="page-number">Page <%= pages %> out of <%= maxPages %></span>
                     <a href="#" class="next-button">Next Page</a>
                 <% } else if (Number(pages) == 1 && Number(pages) < maxPages) { %>
                     <a href="#" class="prev-button">Previous Page</a>
                     <span class="page-number">Page <%= pages %> out of <%= maxPages %></span>
-                    <a href="/search/<%= query %>/<%= Number(pages) + 1 %>" class="next-button">Next Page</a>
+                    <a href="/<%= username %>/search/<%= query %>/<%= Number(pages) + 1 %>" class="next-button">Next Page</a>
                 <% } else { %>
                     <a href="#" class="prev-button">Previous Page</a>
                     <span class="page-number">Page <%= pages %> out of <%= maxPages %></span>

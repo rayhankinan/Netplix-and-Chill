@@ -50,6 +50,7 @@ const requireLogin = (req, res, next) => {
     });
 };
 
+// REGISTRATION
 app.get('/', (req, res) => {
     req.session.jwtToken = null;
     res.redirect('/login');
@@ -104,10 +105,12 @@ app.post('/process_register', (req, res) => {
     });
 });
 
+// MIDDLEWARE
 app.all('/*', requireLogin, (req, res, next) => {
     next();
 });
 
+// WATCHLIST
 app.get('/top', (req, res) => {
     res.render('top.ejs');
 });
@@ -242,10 +245,12 @@ app.get('/view/:id', (req, res) => {
     });
 });
 
+// ERROR HANDLING
 app.get('*', (req, res) => {
     res.send('Invalid URL');
 });
 
+// LISTEN PORT
 app.listen(port, () => {
     console.log(`App is running on http://localhost:${port}`);
 });

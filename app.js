@@ -1,16 +1,25 @@
 require('dotenv').config()
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const mysql = require('mysql');
 const XMLHttpRequest = require('xhr2');
 const bcrypt = require('bcrypt');
+const cors = require('cors');
 
 const app = express();
 const saltRounds = parseInt(process.env.SALTROUND);
+const port = parseInt(process.env.PORT);
 
 app.use(express.static('public'));
-app.use(express.urlencoded({
+
+app.use(bodyParser.urlencoded({
     extended: true
+}));
+app.use(bodyParser.json());
+
+app.use(cors({
+    origin: `http://localhost:${port}`
 }));
 
 const connection = mysql.createConnection({
@@ -206,4 +215,6 @@ app.get('/:username/view/:id', (req, res) => {
     });
 });
 
-app.listen(3000);
+app.listen(port, () => {
+    console.log(`App is running on http://localhost:${port}`);
+});

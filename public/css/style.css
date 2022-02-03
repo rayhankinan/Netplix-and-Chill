@@ -109,7 +109,6 @@ h1 {
 }
 
 /* HEADER */
-
 header {
     position: fixed;
     height: 56px;
@@ -117,6 +116,8 @@ header {
     width: 100%;
     background-color: #141414;
     background: linear-gradient(to bottom, rgba(20,20,20,1), rgba(20,20,20,0.5));
+    display: flex;
+    flex-direction: row;
 }
 
 .header-logo {
@@ -129,6 +130,27 @@ header {
 .header-logo img {
     width: 100%;
     margin-top: 14px;
+}
+
+.header-logo img:hover {
+    opacity: 0.75;
+    transition: all 0.3s ease;
+}
+
+.header-link {
+    margin-top: 6px;
+    margin-left: 56px;
+    line-height: 56px;
+    width: fit-content;
+    height: fit-content;
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.header-link:hover {
+    opacity: 0.75;
+    transition: all 0.3s ease;
 }
 
 /* CONTAINER */
@@ -529,7 +551,7 @@ header {
     margin: 15px auto;
     color: #e50914;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 600;
     background-color: rgba(255, 255, 255, 0.1);
     padding: 0 5px;
     border: 2px solid rgba(255, 255, 255, 0.5);

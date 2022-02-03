@@ -10,12 +10,12 @@
     </head>
     <body>
         <header>
-            <a href="/<%= username %>/top" class="header-logo"><img src="/images/topKecil.png"></a>
-            <a href="/<%= username %>/explore/1" class="header-link">Explore</a>
+            <a href="/top" class="header-logo"><img src="/images/topKecil.png"></a>
+            <a href="/explore/1" class="header-link">Explore</a>
         </header>
         <div class="container">
             <div class="container-back">
-                <a href="/<%= username %>/watchlist" class="back-button">Back</a>
+                <a href="/watchlist" class="back-button">Back</a>
             </div>
             <ul class="table-body">
                 <div class="movie-data">
@@ -28,8 +28,8 @@
                     <span class="genre-column">Genres: <%= movie.genres.map((genre) => {return genre.name}).join(', ') %> </span>
                 </div>
                 <div class="movie-menu-watchlist">
-                    <form action="/<%= username %>/remove/<%= movie.id %>" method="POST">
-                        <input type="hidden" name="dir" value="/<%= username %>/watchlist">
+                    <form action="/remove/<%= movie.id %>" method="POST">
+                        <input type="hidden" name="dir" value="/watchlist">
                         <input type="submit" value="- Remove from Watchlist">
                     </form>
                 </div>

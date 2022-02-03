@@ -10,12 +10,12 @@
     </head>
     <body>
         <header>
-            <a href="/<%= username %>/top" class="header-logo"><img src="/images/topKecil.png"></a>
-            <a href="/<%= username %>/watchlist" class="header-link">My Watchlist</a>
+            <a href="/top" class="header-logo"><img src="/images/topKecil.png"></a>
+            <a href="/watchlist" class="header-link">My Watchlist</a>
         </header>
         <div class="container">
             <div class="container-back">
-                <a href="/<%= username %>/search/<%= query %>/<%= pages %>" class="back-button">Back</a>
+                <a href="/search/<%= query %>/<%= pages %>" class="back-button">Back</a>
             </div>
             <ul class="table-body">
                 <div class="movie-data">
@@ -29,8 +29,8 @@
                 </div>
                 <div class="movie-menu">
                     <% if (!(watchList.map((watch) => {return watch.movie_id}).indexOf(movie.id) != -1)) { %>
-                        <form action="/<%= username %>/add/<%= movie.id %>" method="POST">
-                            <input type="hidden" name="dir" value="/<%= username %>/result/<%= query %>/<%= pages %>/<%= movie.id %>">
+                        <form action="/add/<%= movie.id %>" method="POST">
+                            <input type="hidden" name="dir" value="/result/<%= query %>/<%= pages %>/<%= movie.id %>">
                             <input type="submit" value="+ Add to Watchlist">
                         </form>
                     <% } else { %>

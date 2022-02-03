@@ -10,8 +10,8 @@
     </head>
     <body>
         <header>
-            <a href="/<%= username %>/top" class="header-logo"><img src="/images/topKecil.png"></a>
-            <a href="/<%= username %>/explore/1" class="header-link">Explore</a>
+            <a href="/top" class="header-logo"><img src="/images/topKecil.png"></a>
+            <a href="/explore/1" class="header-link">Explore</a>
         </header>
         <div class="container">
             <div class="container-header">
@@ -21,12 +21,12 @@
                 <% movies.forEach((movie) => { %>
                     <div class="movie-watchlist">
                         <div class="movie-data-watchlist">
-                            <span class="name-column-watchlist"><a href="/<%= username %>/view/<%= movie.movie_id %>"><%= movie.movie_title %></a></span>
+                            <span class="name-column-watchlist"><a href="/view/<%= movie.movie_id %>"><%= movie.movie_title %></a></span>
                             <span class="img-column-watchlist"><img src="https://image.tmdb.org/t/p/w500<%= movie.img_link %>" onerror="this.onerror;this.src='/images/imageError.png'"></span>
                         </div>
                         <div class="movie-menu-watchlist">
-                            <form action="/<%= username %>/remove/<%= movie.movie_id %>" method="POST">
-                                <input type="hidden" name="dir" value="/<%= username %>/watchlist">
+                            <form action="/remove/<%= movie.movie_id %>" method="POST">
+                                <input type="hidden" name="dir" value="/watchlist">
                                 <input type="submit" value="- Remove from Watchlist">
                             </form>
                         </div>

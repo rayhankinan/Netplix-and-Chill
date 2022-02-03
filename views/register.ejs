@@ -20,8 +20,8 @@
                 </div>
             <% } %>
             <form action="/process_register" method="POST" class="register-form">
-                <input type="text" name="username" class="username-input" placeholder="Username" required>
-                <input type="password" name="password" class="password-input" placeholder="Password" required>
+                <input type="text" name="username" class="username-input" placeholder="Username" autocomplete="on" required>
+                <input type="password" name="password" class="password-input" placeholder="Password" autocomplete="on" required>
                 <input type="submit" value="Register" class="submit-button">
             </form>
             <a href="/login" class="login-button">Login</a>

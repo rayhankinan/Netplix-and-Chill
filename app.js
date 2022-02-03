@@ -6,6 +6,7 @@ const mysql = require('mysql');
 const XMLHttpRequest = require('xhr2');
 const bcrypt = require('bcrypt');
 const cors = require('cors');
+const session = require('express-session');
 
 const app = express();
 const saltRounds = parseInt(process.env.SALTROUND);
@@ -22,6 +23,12 @@ app.use(cors({
     origin: `http://localhost:${port}`
 }));
 
+app.use(session({
+    secret: process.env.SECRET_KEY,
+    resave: false,
+    saveUninitialized: true
+}));
+
 const connection = mysql.createConnection({
     host: process.env.HOST,
     user: process.env.USER,
@@ -31,7 +38,16 @@ const connection = mysql.createConnection({
 
 const apiKey = process.env.APIKEY;
 
+const requireLogin = (req, res, next) => {
+    if (req.session.loggedIn) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+};
+
 app.get('/', (req, res) => {
+    req.session.loggedIn = false;
     res.redirect('/login');
 });
 
@@ -48,12 +64,15 @@ app.post('/process_login', (req, res) => {
         if (databaseResults.length !== 0) {
             bcrypt.compare(req.body.password, databaseResults[0].password, (hashErr, hashRes) => {
                 if (hashRes) {
+                    req.session.loggedIn = true;
                     res.redirect(`/${req.body.username}/top`);
                 } else {
+                    req.session.loggedIn = false;
                     res.redirect('/login/fail');
                 }
             });
         } else {
+            req.session.loggedIn = false;
             res.redirect('/login/fail');
         }
     });
@@ -79,6 +98,10 @@ app.post('/process_register', (req, res) => {
             res.redirect('/register/fail');
         }
     });
+});
+
+app.all('/:username/*', requireLogin, (req, res, next) => {
+    next();
 });
 
 app.get('/:username/top', (req, res) => {

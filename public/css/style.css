@@ -152,6 +152,10 @@ header {
 
 .item-form-wrapper {
     margin: 12px auto 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
 }
 
 .item-form-wrapper form {
@@ -185,9 +189,33 @@ header {
     cursor: pointer;
     outline: none;
     border: 2px solid #ffffff;
+    font-size: 14px;
 }
 
 .item-form-wrapper input[type="submit"]:hover {
+    background-color: #141414;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+.item-form-wrapper a {
+    width: 90px;
+    height: 45px;
+    margin-top: 6px;
+    margin-left: 10px;
+    border-radius: 30px;
+    font-weight: 600;
+    background-color: #ffffff;
+    color: #141414;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid #ffffff;
+    font-size: 14px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.item-form-wrapper a:hover {
     background-color: #141414;
     color: #ffffff;
     transition: all 0.3s ease;

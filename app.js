@@ -36,7 +36,7 @@ const connection = mysql.createConnection({
     database: process.env.DATABASE
 });
 
-const apiKey = process.env.APIKEY;
+const apiKey = process.env.API_KEY;
 
 const requireLogin = (req, res, next) => {
     if (req.session.loggedIn) {

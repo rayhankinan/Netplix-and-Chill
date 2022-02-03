@@ -73,7 +73,7 @@ h1 {
     margin-bottom: 40px;
 }
 
-.top-detail .index-button, .list-button {
+.top-detail .index-button, .list-button, .logout-button {
     width: 184px;
     height: 48px;
     text-align: center;
@@ -86,7 +86,7 @@ h1 {
     margin-top: 5px;
 }
 
-.top-detail .index-button:hover, .list-button:hover {
+.top-detail .index-button:hover, .list-button:hover, .logout-button:hover {
     color: #ffffff;
     background-color:  #141414;
     transition: all 0.3s ease;
@@ -138,7 +138,7 @@ header {
     margin-top: 75px;
 }
 
-.container-header .container-box {
+.container-header {
     margin-bottom: 12px;
     display: flex;
     flex-direction: column;

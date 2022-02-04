@@ -1,8 +1,7 @@
 # Netplix
-NETPLIX menampilkan film terbaru dan terlaris.
-Anda dapat menambahkan film yang ingin ditonton ke dalam watchlist Anda.
 
 ## Daftar Isi
+* [Deskripsi Singkat Program](#deskripsi-singkat-program)
 * [Struktur Program](#struktur-program)
 * [Struktur Database](#struktur-database)
 * [Requirement Program](#requirement-program)
@@ -11,6 +10,11 @@ Anda dapat menambahkan film yang ingin ditonton ke dalam watchlist Anda.
 * [Run Program](#run-program)
 * [Screenshots](#screenshots-program)
 * [Authors dan Pembagian Kerja](#authors-dan-pembagian-kerja)
+
+## Deskripsi Singkat Program
+NETPLIX menampilkan film terbaru dan terlaris.
+Anda dapat menambahkan film yang ingin ditonton ke dalam watchlist Anda.
+Aplikasi web ini dibuat dengan menggunakan Node.js serta MySQL.
 
 ## Struktur Program
 ```bash
@@ -56,7 +60,7 @@ Anda dapat menambahkan film yang ingin ditonton ke dalam watchlist Anda.
 2. Buatlah sebuah database baru dengan nama `movie_app` pada MySQL.
 3. Jalankan perintah `mysql -u root -p movie_app < database.sql` pada command prompt untuk melakukan pendefinisian tabel.
 
-## Setup .env File
+## Setup `.env` File
 * PORT={Port yang digunakan}
 * HOST={Hostname / IP yang digunakan oleh MySQL}
 * USER={Username dari MySQL}
@@ -69,7 +73,7 @@ Anda dapat menambahkan film yang ingin ditonton ke dalam watchlist Anda.
 
 ## Run Program
 1. Jalankan perintah `npm run start` untuk menjalankan aplikasi web.
-2. Jalankan localhost dengan port yang digunakan pada file .env pada web browser.
+2. Jalankan localhost dengan port yang digunakan pada file `.env` pada web browser.
 
 ## Screenshots Program
 

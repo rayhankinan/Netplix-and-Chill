@@ -30,7 +30,6 @@
                 <div class="movie-menu">
                     <% if (!(watchList.map((watch) => {return watch.movie_id}).indexOf(movie.id) != -1)) { %>
                         <form action="/add/<%= movie.id %>" method="POST">
-                            <input type="hidden" name="dir" value="/detail/<%= pages %>/<%= movie.id %>">
                             <input type="submit" value="+ Add to Watchlist">
                         </form>
                     <% } else { %>

@@ -200,7 +200,7 @@ app.post('/add/:id', (req, res) => {
                     'INSERT INTO movies (user_id, movie_id, movie_title, img_link) VALUES (?, ?, ?, ?)',
                     [databaseResults[0].id, req.params.id, results.title, results.poster_path],
                     (databaseError, databaseResults) => {
-                        res.redirect(req.body.dir);
+                        res.redirect('back');
                     }
                 );
             }
@@ -217,7 +217,7 @@ app.post('/remove/:id', (req, res) => {
                 'DELETE FROM movies WHERE user_id = ? AND movie_id = ?',
                 [databaseResults[0].id, req.params.id],
                 (databaseError, databaseResults) => {
-                    res.redirect(req.body.dir);
+                    res.redirect('back');
                 }
             );
         }

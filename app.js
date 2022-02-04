@@ -44,7 +44,7 @@ const requireLogin = (req, res, next) => {
         if (jwtError) {
             res.redirect('/login');
         } else {
-            req.session.username = jwtDecoded.username;
+            req.session.user = jwtDecoded;
             next();
         }
     });
@@ -116,7 +116,7 @@ app.get('/top', (req, res) => {
 });
 
 app.get('/explore/:id', (req, res) => {
-    connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.username], (databaseError, databaseResults) => {
+    connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.user.username], (databaseError, databaseResults) => {
         const requestURL = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&page=${req.params.id}`;
         const request = new XMLHttpRequest();
         request.open('GET', requestURL);
@@ -133,7 +133,7 @@ app.get('/explore/:id', (req, res) => {
 });
 
 app.get('/detail/:page_id/:id', (req, res) => {
-    connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.username], (databaseError, databaseResults) => {
+    connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.user.username], (databaseError, databaseResults) => {
         const requestURL = `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${apiKey}`;
         const request = new XMLHttpRequest();
         request.open('GET', requestURL);
@@ -152,7 +152,7 @@ app.post('/process_search', (req, res) => {
 });
 
 app.get('/search/:query/:id', (req, res) => {
-    connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.username], (databaseError, databaseResults) => {
+    connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.user.username], (databaseError, databaseResults) => {
         const requestURL = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&query=${req.params.query}&page=${req.params.id}`;
         const request = new XMLHttpRequest();
         request.open('GET', requestURL);
@@ -169,7 +169,7 @@ app.get('/search/:query/:id', (req, res) => {
 });
 
 app.get('/result/:query/:page_id/:id', (req, res) => {
-    connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.username], (databaseError, databaseResults) => {
+    connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.user.username], (databaseError, databaseResults) => {
         const requestURL = `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${apiKey}`;
         const request = new XMLHttpRequest();
         request.open('GET', requestURL);
@@ -194,7 +194,7 @@ app.post('/add/:id', (req, res) => {
         const results = request.response;
         connection.query(
             'SELECT id FROM users WHERE username = ?',
-            [req.session.username],
+            [req.session.user.username],
             (databaseError, databaseResults) => {
                 connection.query(
                     'INSERT INTO movies (user_id, movie_id, movie_title, img_link) VALUES (?, ?, ?, ?)',
@@ -211,7 +211,7 @@ app.post('/add/:id', (req, res) => {
 app.post('/remove/:id', (req, res) => {
     connection.query(
         'SELECT id FROM users WHERE username = ?',
-        [req.session.username],
+        [req.session.user.username],
         (databaseError, databaseResults) => {
             connection.query(
                 'DELETE FROM movies WHERE user_id = ? AND movie_id = ?',
@@ -225,13 +225,13 @@ app.post('/remove/:id', (req, res) => {
 });
 
 app.get('/watchlist', (req, res) => {
-    connection.query('SELECT movies.movie_id, movies.movie_title, movies.img_link FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.username], (databaseError, databaseResults) => {
+    connection.query('SELECT movies.movie_id, movies.movie_title, movies.img_link FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.user.username], (databaseError, databaseResults) => {
         res.render('watchlist.ejs', {movies: JSON.parse(JSON.stringify(databaseResults))});
     });
 });
 
 app.get('/view/:id', (req, res) => {
-    connection.query('SELECT movies.movie_id, movies.movie_title, movies.img_link FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.username], (databaseError, databaseResults) => {
+    connection.query('SELECT movies.movie_id, movies.movie_title, movies.img_link FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.user.username], (databaseError, databaseResults) => {
         const requestURL = `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${apiKey}`;
         const request = new XMLHttpRequest();
         request.open('GET', requestURL);

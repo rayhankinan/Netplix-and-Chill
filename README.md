@@ -57,6 +57,15 @@ Anda dapat menambahkan film yang ingin ditonton ke dalam watchlist Anda.
 3. Jalankan perintah `mysql -u root -p movie_app < database.sql` pada command prompt untuk melakukan pendefinisian tabel.
 
 ## Setup .env File
+* PORT={Port yang digunakan}
+* HOST={Hostname / IP yang digunakan oleh MySQL}
+* USER={Username dari MySQL}
+* PASSWORD={Password dari MySQL}
+* DATABASE={Nama dari database yang digunakan}
+* API_KEY={Didapatkan dari API service [TMDb](https://www.themoviedb.org/) (Tutorial mendapatkan API TMDb: [Registrasi & Testing TheMovieDb API](https://www.dicoding.com/blog/registrasi-testing-themoviedb-api/))}
+* SECRET_KEY={Random string untuk middleware session}
+* JWT_TOKEN={Random string untuk middleware jwt}
+* SALTROUND={Cost Factor untuk middleware bcrypt}
 
 ## Run Program
 1. Jalankan perintah `npm run start` untuk menjalankan aplikasi web.

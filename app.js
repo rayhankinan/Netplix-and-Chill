@@ -1,4 +1,4 @@
-require('dotenv').config()
+require('dotenv').config();
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -142,7 +142,7 @@ app.get('/detail/:page_id/:id', (req, res) => {
     
         request.onload = () => {
             const results = request.response;
-            res.render('detail.ejs', {pages: req.params.page_id, movie: results, watchList: Object.values(JSON.parse(JSON.stringify(databaseResults)))});
+            res.render('detail.ejs', {dir: `/explore/${req.params.page_id}`, movie: results, watchList: Object.values(JSON.parse(JSON.stringify(databaseResults)))});
         }
     });
 });
@@ -168,7 +168,7 @@ app.get('/search/:query/:id', (req, res) => {
     });
 });
 
-app.get('/result/:query/:page_id/:id', (req, res) => {
+app.get('/detail/:query/:page_id/:id', (req, res) => {
     connection.query('SELECT movies.movie_id FROM movies INNER JOIN users ON movies.user_id = users.id WHERE users.username = ?', [req.session.user.username], (databaseError, databaseResults) => {
         const requestURL = `https://api.themoviedb.org/3/movie/${req.params.id}?api_key=${apiKey}`;
         const request = new XMLHttpRequest();
@@ -178,7 +178,7 @@ app.get('/result/:query/:page_id/:id', (req, res) => {
 
         request.onload = () => {
             const results = request.response;
-            res.render('result.ejs', {pages: req.params.page_id, movie: results, query: req.params.query, watchList: Object.values(JSON.parse(JSON.stringify(databaseResults)))});
+            res.render('detail.ejs', {dir: `/search/${req.params.query}/${req.params.page_id}`, movie: results, watchList: Object.values(JSON.parse(JSON.stringify(databaseResults)))});
         }
     });
 });

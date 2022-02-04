@@ -27,7 +27,7 @@
             <ul class="table-body">
                 <% movies.forEach((movie) => { %>
                     <div class="movie-data">
-                        <span class="name-column"><a href="/result/<%= query %>/<%= pages %>/<%= movie.id %>"><%= movie.title %></a></span>
+                        <span class="name-column"><a href="/detail/<%= query %>/<%= pages %>/<%= movie.id %>"><%= movie.title %></a></span>
                         <span class="img-column"><img src="https://image.tmdb.org/t/p/w500<%= movie.poster_path %>" onerror="this.onerror;this.src='/images/imageError.png'"></span>
                         <span class="description-column"><p><%= movie.overview %></p></span>
                     </div>

@@ -52,8 +52,8 @@ Aplikasi web ini dibuat dengan menggunakan Node.js serta MySQL.
 ## Struktur Database
 
 ## Requirement Program
-1. Node.js versi terbaru (Anda dapat menginstall Node.js pada link [ini](https://nodejs.org/en/)).
-2. MySQL versi terbaru (Anda dapat menginstall MySQL pada link [ini](https://dev.mysql.com/downloads/windows/installer/)).
+1. Node.js versi terbaru (Anda dapat menginstall Node.js dari link berikut [ini](https://nodejs.org/en/)).
+2. MySQL versi terbaru (Anda dapat menginstall MySQL dari link berikut [ini](https://dev.mysql.com/downloads/windows/installer/)).
 
 ## Setup Environment
 1. Jalankan perintah `npm install` pada command prompt untuk melakukan instalasi semua middleware yang digunakan oleh program.

@@ -247,7 +247,7 @@ app.get('/view/:id', (req, res) => {
 
 // ERROR HANDLING
 app.get('*', (req, res) => {
-    res.send('Invalid URL');
+    res.render('error.ejs');
 });
 
 // LISTEN PORT

@@ -50,10 +50,17 @@ Aplikasi web ini dibuat dengan menggunakan EJS, Node.js, serta MySQL.
 ```
 
 ## Struktur Database
+* Database
 ![Tables](./screenshots/Tables.png)
+* Tabel users
 ![Users](./screenshots/Users.png)
+* Tabel movies
 ![Movies](./screenshots/Movies.png)
+* ERD
 ![Entity Relationship Diagram](./screenshots/ERD.png)
+* Penjelasan
+Tabel users: Mencatat users yang terdaftar pada database. Digunakan saat register dan login.
+Tabel movies: Mencatat movies yang ditambahkan ke watchlist oleh user. Digunakan saat add movie, remove movie, dan view watchlist.
 
 ## Requirement Program
 1. Node.js versi terbaru (Anda dapat menginstall Node.js dari link berikut [ini](https://nodejs.org/en/)).

@@ -51,6 +51,7 @@ Aplikasi web ini dibuat dengan menggunakan EJS, Node.js, serta MySQL.
 
 ## Struktur Database
 1. Database
+<br/>
 ![Tables](./screenshots/Tables.png)
 2. Tabel users
 ![Users](./screenshots/Users.png)

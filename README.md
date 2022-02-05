@@ -57,7 +57,7 @@ Aplikasi web ini dibuat dengan menggunakan EJS, Node.js, serta MySQL.
 3. Tabel movies
 ![Movies](./screenshots/Movies.png)
 4. ERD
-![Entity Relationship Diagram](./screenshots/ERD.png)
+![Entity Relationship Diagram](./screenshots/ERD.jpg)
 5. Penjelasan
 * Tabel users: Mencatat users yang terdaftar pada database. Digunakan saat register dan login.
 * Tabel movies: Mencatat movies yang ditambahkan ke watchlist oleh user. Digunakan saat add movie, remove movie, dan view watchlist.

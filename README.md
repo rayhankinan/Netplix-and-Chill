@@ -87,6 +87,22 @@ Aplikasi web ini dibuat dengan menggunakan EJS, Node.js, serta MySQL.
 2. Jalankan localhost dengan port yang digunakan pada file `.env` pada web browser.
 
 ## Screenshots Program
+1. Login Page
+![Login](./screenshots/Login.png)
+2. Register Page
+![Register](./screenshots/Register.png)
+3. Landing Page
+![Top](./screenshots/Top.png)
+4. Explore Page
+![Explore](./screenshots/Explore.png)
+5. Detail Page
+![Detail](./screenshots/Detail.png)
+6. Search Page
+![Search](./screenshots/Search.png)
+7. Watchlist Page
+![Watchlist](./screenshots/Watchlist.png)
+8. View Movie Page
+![View](./screenshots/View.png)
 
 ## Authors dan Pembagian Kerja
 1. [Rayhan Kinan Muhannad](https://github.com/rayhankinan) (GDSC ID: 189)

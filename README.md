@@ -1,4 +1,4 @@
-# Netplix
+# Netplix-and-Chill
 
 ## Daftar Isi
 * [Deskripsi Singkat Program](#deskripsi-singkat-program)
@@ -14,7 +14,7 @@
 ## Deskripsi Singkat Program
 NETPLIX menampilkan film terbaru dan terlaris.
 Anda dapat menambahkan film yang ingin ditonton ke dalam watchlist Anda.
-Aplikasi web ini dibuat dengan menggunakan Node.js serta MySQL.
+Aplikasi web ini dibuat dengan menggunakan EJS, Node.js, serta MySQL.
 
 ## Struktur Program
 ```bash
@@ -50,6 +50,10 @@ Aplikasi web ini dibuat dengan menggunakan Node.js serta MySQL.
 ```
 
 ## Struktur Database
+![Tables](./screenshots/Tables.png)
+![Users](./screenshots/Users.png)
+![Movies](./screenshots/Movies.png)
+![Entity Relationship Diagram](./screenshots/ERD.png)
 
 ## Requirement Program
 1. Node.js versi terbaru (Anda dapat menginstall Node.js dari link berikut [ini](https://nodejs.org/en/)).
